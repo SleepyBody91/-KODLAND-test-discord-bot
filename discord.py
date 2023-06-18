@@ -7,7 +7,7 @@ intents.message_content = True
 
 bot = commands.Bot(command_prefix='$', intents=intents)
 
-openai.api_key = 'YOUR_OPENAI_API_KEY' # тут ключ Open AI
+openai.api_key = 'КЛЮЧ_OpenAi' # тут ключ Open AI
 
 @bot.event
 async def on_ready():
@@ -50,4 +50,4 @@ async def help(ctx):
     command_list = [command.name for command in bot.commands]
     await ctx.send(f'Available commands: {", ".join(command_list)}')
 
-bot.run('Api')
+bot.run('Ключ_бота_дискорд')
