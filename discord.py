@@ -44,4 +44,10 @@ async def cool(ctx):
     if ctx.invoked_subcommand is None:
         await ctx.send(f'No, {ctx.subcommand_passed} is not cool')
 
+@bot.command()
+async def help(ctx):
+   # """Выводит список комманд."""
+    command_list = [command.name for command in bot.commands]
+    await ctx.send(f'Available commands: {", ".join(command_list)}')
+
 bot.run('Api')
