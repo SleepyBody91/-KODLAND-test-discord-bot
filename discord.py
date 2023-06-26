@@ -10,13 +10,14 @@ intents.message_content = True
 
 bot = commands.Bot(command_prefix='$', intents=intents)
 
-openai.api_key = 'api' # тут ключ Open AI
+openai.api_key = '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' # тут ключ Open AI
 
 def get_dog_image_url():
     url = 'https://random.dog/woof.json'
     res = requests.get(url)
     data = res.json()
     return data['url']
+
 
 
 @bot.command(name='собака')
@@ -63,16 +64,22 @@ async def cool(ctx):
     if ctx.invoked_subcommand is None:
         await ctx.send(f'No, {ctx.subcommand_passed} is not cool')
 
-@bot.command()
+@bot.command() #редкость мемма
 async def mem(ctx):
-    random_mem = random.randint(1, 2)
-    if random_mem == 1:
+    random_mem = random.randint(1, 100)
+    
+    if random_mem <= 35:
         with open('images/mem1.jpg', 'rb') as f:
             picture = discord.File(f)
             await ctx.send(file=picture)
-    elif random_mem == 2:
+    elif random_mem <= 67:
+        with open('images/mem3.gif', 'rb') as f:
+            picture = discord.File(f)
+            await ctx.send(file=picture)
+    else:
         with open('images/mem2.jpg', 'rb') as f:
             picture = discord.File(f)
             await ctx.send(file=picture)
+
 
 bot.run('api_key')
